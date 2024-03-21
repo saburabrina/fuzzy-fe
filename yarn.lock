@@ -268,6 +268,13 @@
   dependencies:
     prop-types "^15.6.0"
 
+"@progress/kendo-react-grid@^7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-react-grid/-/kendo-react-grid-7.3.0.tgz#e17b056eaf1f80c7541d0583bbc3e5e377339b4a"
+  integrity sha512-wXRjg4u72Jv9XDOnYULqLkboldKV93JHIQypu7MMFiF8DN52addKKlvG2dAsWzz2Ek52Hyb2UkMLv7Zm8I0Nwg==
+  dependencies:
+    prop-types "^15.6.0"
+
 "@progress/kendo-react-inputs@^7.3.0":
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/@progress/kendo-react-inputs/-/kendo-react-inputs-7.3.0.tgz#2ad92c85ae5ba00314f9a461e5cc73506afe6361"
@@ -296,10 +303,36 @@
   dependencies:
     prop-types "^15.6.0"
 
+"@progress/kendo-svg-icons@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-svg-icons/-/kendo-svg-icons-2.1.0.tgz#6a82dfa7a93056318e7e3c50b660164cd783afba"
+  integrity sha512-zAwxw8lt5xlIBMoE3uwUX2Z2RI5njWViYxdFoinvr5d8WJ6kU3sghNONsRelM9GiDd2vbSg0IkEN8dOrBvFjPg==
+
 "@progress/kendo-svg-icons@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@progress/kendo-svg-icons/-/kendo-svg-icons-2.3.0.tgz#3926a0b39994a296c587d84144cf806739ab8a5d"
   integrity sha512-VB4x1o6eVoYcCgTDBMkV88giGXsDlyCEJAMFLd9x99oJlmufx4KC6/bzehFn3CXdTcvhw0ONlTm3H8gM9ZH6JQ==
+
+"@progress/kendo-theme-core@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-theme-core/-/kendo-theme-core-7.2.1.tgz#0dedd32dd06a5f3821f68c4e5ccdda1938822676"
+  integrity sha512-fv6ELPjmQWw5p7ksv96RIiSWMQKenXdkK6b96vSakoQcexR/4oKDgbEXnApxeLgTUimh8Hp8M+6JIoZm+EQhyA==
+
+"@progress/kendo-theme-default@^7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-theme-default/-/kendo-theme-default-7.2.1.tgz#f84d25d0bdbb239a6a70b9964c8577db7dca6edf"
+  integrity sha512-WUMg+GZKpP37WL0aeGRi3i8vNmfEJdb5nHVBWAZeuEi/AS8cycVOCwcdDK4NywK9bUI/I0eUvLToxydLOHv6Pg==
+  dependencies:
+    "@progress/kendo-svg-icons" "2.1.0"
+    "@progress/kendo-theme-core" "7.2.1"
+    "@progress/kendo-theme-utils" "7.2.1"
+
+"@progress/kendo-theme-utils@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-theme-utils/-/kendo-theme-utils-7.2.1.tgz#8683d3c1acc9eafa18b574b6a12c69215b635f3a"
+  integrity sha512-2IzRoBkjb2yolzJoQBZcsccmHT5a6GDw52O/PBXZHsxc5Cir7ej9CjP3tO2O4rWRg+8GfNEzB5XpwUb54lLF0Q==
+  dependencies:
+    "@progress/kendo-theme-core" "7.2.1"
 
 "@progress/pako-esm@^1.0.1":
   version "1.0.1"
@@ -2271,7 +2304,7 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-vite@^5.2.0:
+vite@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/vite/-/vite-5.2.2.tgz#b98f8de352d22e21d99508274ddd053ef82bf238"
   integrity sha512-FWZbz0oSdLq5snUI0b6sULbz58iXFXdvkZfZWR/F0ZJuKTSPO7v72QPXt6KqYeMFb0yytNp6kZosxJ96Nr/wDQ==

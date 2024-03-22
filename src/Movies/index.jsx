@@ -9,6 +9,7 @@ import { filterBy } from '@progress/kendo-data-query';
 import { Button } from '@progress/kendo-react-buttons';
 
 import RateWindow from './RateWindow';
+import CreateWindow from './CreateWindow';
 
 import axios from 'axios';
 
@@ -31,9 +32,14 @@ function Movies() {
 
   const [filter, setFilter] = useState(initialFilter);
   const [rateWindowVisible, setRateWindowVisible] = useState(false);
+  const [createWindowVisible, setCreateWindowVisible] = useState(false);
 
-  const toggleDialog = () => {
+  const toggleRateWindow = () => {
     setRateWindowVisible(!rateWindowVisible);
+  };
+
+  const toggleCreateWindow = () => {
+    setCreateWindowVisible(!createWindowVisible);
   };
 
   const onFilterChange = (event) => {
@@ -73,10 +79,20 @@ function Movies() {
         <Column field={'average_score'} title={'Score'} />
       </Grid>
       <div>
-        <Button className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" onClick={toggleDialog}>
+        <Button
+          className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base"
+          onClick={toggleRateWindow}
+        >
           Rate Movies
         </Button>
-        {rateWindowVisible && <RateWindow movies={filteredMovies} toggleWindow={toggleDialog} />}
+        <Button
+          className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base"
+          onClick={toggleCreateWindow}
+        >
+          Create Movies
+        </Button>
+        {rateWindowVisible && <RateWindow movies={filteredMovies} toggleWindow={toggleRateWindow} />}
+        {createWindowVisible && <CreateWindow toggleWindow={toggleCreateWindow} />}
       </div>
     </div>
   );

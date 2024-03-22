@@ -35,14 +35,16 @@ function RateWindow({ movies, toggleWindow }) {
             title={'Score (0 - 10)'}
             cells={{
               data: ({ dataIndex, dataItem }) => (
-                <Input
-                  name="score"
-                  type="numeric"
-                  onChange={(e) => onChangeInput(dataIndex, e.value)}
-                  placeholder={dataItem.user_score}
-                  min={0}
-                  max={10}
-                />
+                <td>
+                  <Input
+                    name="score"
+                    type="numeric"
+                    onChange={(e) => onChangeInput(dataIndex, e.value)}
+                    placeholder={dataItem.user_score}
+                    min={0}
+                    max={10}
+                  />
+                </td>
               ),
             }}
           />

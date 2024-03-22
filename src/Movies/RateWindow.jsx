@@ -34,12 +34,12 @@ function RateWindow({ movies, toggleWindow }) {
             field={'score'}
             title={'Score (0 - 10)'}
             cells={{
-              data: ({ dataIndex }) => (
+              data: ({ dataIndex, dataItem }) => (
                 <Input
                   name="score"
-                  type="number"
+                  type="numeric"
                   onChange={(e) => onChangeInput(dataIndex, e.value)}
-                  placeholder="0"
+                  placeholder={dataItem.user_score}
                   min={0}
                   max={10}
                 />

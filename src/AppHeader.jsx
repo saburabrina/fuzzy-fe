@@ -16,6 +16,7 @@ const AppHeader = () => {
     <AppBar>
       <AppBarSection>
         <ButtonGroup>
+          <Button onClick={() => navigate('/')}>Home</Button>
           <Button onClick={logout}>Logout</Button>
           <Button onClick={() => navigate('/create-user')}>Create User</Button>
         </ButtonGroup>

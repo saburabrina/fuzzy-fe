@@ -8,26 +8,41 @@ import '@progress/kendo-theme-default/dist/all.css';
 import App from './App';
 import Login from './Login';
 import Movies from './Movies';
+import CreateUser from './CreateUser';
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: '/login',
-    element: <Login />,
+    element: (
+      <App>
+        <Login />
+      </App>
+    ),
   },
   {
     path: '/',
-    element: <Movies />,
+    element: (
+      <App>
+        <Movies />
+      </App>
+    ),
+  },
+  {
+    path: '/create-user',
+    element: (
+      <App>
+        <CreateUser />
+      </App>
+    ),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App>
-        <RouterProvider router={router} />
-      </App>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>,
 );

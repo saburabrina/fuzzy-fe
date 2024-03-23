@@ -5,35 +5,47 @@ import { Button } from '@progress/kendo-react-buttons';
 
 import React from 'react';
 
-import { useLogin } from './state/mutations';
+import { useCreateUser } from './state/mutations';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function CreateUser() {
   const navigate = useNavigate();
 
   const onSuccess = () => {
     navigate('/');
   };
 
-  const login = useLogin({ onSuccess });
+  const createUser = useCreateUser({ onSuccess });
 
   const handleSubmit = (v) => {
     const form = new FormData();
-    form.set('email', v.email);
-    form.set('password', v.password);
+    form.set('user[username]', v.username);
+    form.set('user[email]', v.email);
+    form.set('user[password]', v.password);
+    form.set('user[password_confirmation]', v.password_confirmation);
 
     const data = new URLSearchParams(form);
-    login.mutate(data);
+    createUser.mutate(data);
   };
 
   return (
-    <div className="login">
+    <div className="register">
       <Form
         onSubmit={handleSubmit}
         render={() => (
           <FormElement>
             <fieldset className="k-form-fieldset">
-              <legend className="k-form-legend">Login</legend>
+              <legend className="k-form-legend">Register</legend>
+              <FieldWrapper className="k-form-field-wrap">
+                <Field
+                  labelClassName="k-form-label"
+                  label="Username: "
+                  name="username"
+                  type="text"
+                  component={Input}
+                ></Field>
+              </FieldWrapper>
+
               <FieldWrapper className="k-form-field-wrap">
                 <Field
                   labelClassName="k-form-label"
@@ -55,10 +67,22 @@ function Login() {
                   ></Field>
                 </div>
               </FieldWrapper>
+
+              <FieldWrapper>
+                <div className="k-form-field-wrap">
+                  <Field
+                    labelClassName="k-form-label"
+                    label="Confirm Password: "
+                    name="password_confirmation"
+                    type="password"
+                    component={Input}
+                  ></Field>
+                </div>
+              </FieldWrapper>
             </fieldset>
 
             <div className="button-group">
-              <Button type="submit">Login</Button>
+              <Button type="submit">Register</Button>
             </div>
           </FormElement>
         )}
@@ -67,4 +91,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default CreateUser;

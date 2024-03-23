@@ -6,9 +6,15 @@ export const useMovies = () =>
     queryFn: () => {
       return axios
         .get('http://localhost:3000/movies', { withCredentials: true, headers: { Accept: 'application/json' } })
-        .then((res) => res.data)
-        .catch((err) => err);
+        .then((res) => {
+          console.log(res);
+          return res.data;
+        })
+        .catch((err) => {
+          throw err;
+        });
     },
+    retry: false,
     queryKey: ['MOVIES'],
   });
 

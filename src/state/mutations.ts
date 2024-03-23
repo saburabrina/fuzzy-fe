@@ -1,11 +1,12 @@
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
-export const useLogin = () =>
+export const useLogin = ({ onSuccess }) =>
   useMutation({
     mutationFn: (data) => {
       return axios.post('http://localhost:3000/sessions', data, { withCredentials: true });
     },
+    onSuccess: onSuccess,
   });
 
 export const useRateMovies = ({ onSuccess }) =>

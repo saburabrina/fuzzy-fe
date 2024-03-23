@@ -7,12 +7,18 @@ import { useState } from 'react';
 import React from 'react';
 
 import { useLogin } from './state/mutations';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const login = useLogin();
+  const onSuccess = () => {
+    navigate('/');
+  };
+
+  const login = useLogin({ onSuccess });
 
   const handleSubmit = (v) => {
     const form = new FormData();
@@ -48,6 +54,7 @@ function Login() {
                     labelClassName={'k-form-label'}
                     label={'Password: '}
                     name={'password'}
+                    type={'password'}
                     component={Input}
                     value={password}
                     onChange={(v) => setPassword(v)}

@@ -9,6 +9,23 @@ import { jobStatus, useMovies } from '../state/queries';
 
 import RateWindow from './RateWindow';
 import CreateWindow from './CreateWindow';
+import { useNavigate } from 'react-router-dom';
+
+const initialFilter = {
+  logic: 'and',
+  filters: [
+    {
+      field: 'title',
+      operator: 'contains',
+      value: '',
+    },
+    {
+      field: 'director',
+      operator: 'contains',
+      value: '',
+    },
+  ],
+};
 
 const JobNotification = ({ type, action, onClose }) => {
   const successMessage = 'Your submission was completed';
@@ -39,26 +56,11 @@ const JobNotification = ({ type, action, onClose }) => {
 };
 
 function Movies() {
-  const initialFilter = {
-    logic: 'and',
-    filters: [
-      {
-        field: 'title',
-        operator: 'contains',
-        value: '',
-      },
-      {
-        field: 'director',
-        operator: 'contains',
-        value: '',
-      },
-    ],
-  };
-
   const [filter, setFilter] = useState(initialFilter);
   const [rateWindowVisible, setRateWindowVisible] = useState(false);
   const [createWindowVisible, setCreateWindowVisible] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate();
 
   const { isLoading: isLoadingMovies, error: isErrorMovies, data: movies, refetch: refetchMovies } = useMovies();
 
@@ -99,9 +101,12 @@ function Movies() {
     return filterBy(movies, filter);
   }, [movies, filter]);
 
-  if (isLoadingMovies) return <>{'Loading'}</>;
+  if (isLoadingMovies) return <div>{'Loading'}</div>;
 
-  if (isErrorMovies) return <>{'Error: ' + error}</>;
+  if (isErrorMovies) {
+    if (isErrorMovies.response.status == 403) return navigate('/login');
+    else return <div>{'Error: ' + isErrorMovies.message}</div>;
+  }
 
   return (
     <div>

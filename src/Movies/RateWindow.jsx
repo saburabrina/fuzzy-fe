@@ -29,7 +29,13 @@ function RateWindow({ movies, toggleWindow, ...props }) {
   isSuccess && toggleWindow();
 
   return (
-    <Window title={'Rate Selected Movies'} onClose={toggleWindow} initialWidth={1000}>
+    <Window
+      title={'Rate Selected Movies'}
+      onClose={toggleWindow}
+      initialWidth={window.innerWidth < 768 ? window.innerWidth : window.innerWidth * 0.75}
+      initialHeight={window.innerHeight * 0.7}
+      modal
+    >
       <fieldset>
         <legend>Movies List</legend>
         {rateMovies.isPending && 'Loading...'}
@@ -57,9 +63,11 @@ function RateWindow({ movies, toggleWindow, ...props }) {
           />
         </Grid>
       </fieldset>
-      <Button type="submit" onClick={handleSubmit}>
-        Save
-      </Button>
+      <div className="button-group">
+        <Button themeColor={'secondary'} type="submit" onClick={handleSubmit}>
+          Save
+        </Button>
+      </div>
     </Window>
   );
 }

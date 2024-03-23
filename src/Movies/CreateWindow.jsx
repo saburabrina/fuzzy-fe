@@ -123,7 +123,13 @@ function CreateWindow({ toggleWindow, ...props }) {
   isSuccess && toggleWindow();
 
   return (
-    <Window title={'Submit Movies'} onClose={toggleWindow} initialWidth={1000} initialHeight={500}>
+    <Window
+      title={'Submit Movies'}
+      onClose={toggleWindow}
+      initialWidth={window.innerWidth < 768 ? window.innerWidth : window.innerWidth * 0.5}
+      initialHeight={window.innerHeight < 768 ? window.innerHeight : 320}
+      modal
+    >
       <fieldset>
         <legend>Movies</legend>
         {isError && 'Something Got Wrong...'}
@@ -138,9 +144,11 @@ function CreateWindow({ toggleWindow, ...props }) {
         {!rawJSON && <FormField newMovies={newMovies} setNewMovies={setNewMovies} onAdd={onAdd} />}
         {rawJSON && <JsonField newMovies={newMovies} setNewMovies={setNewMovies} />}
       </fieldset>
-      <Button type="submit" onClick={handleSubmit}>
-        Save
-      </Button>
+      <div className="button-group">
+        <Button themeColor={'secondary'} type="submit" onClick={handleSubmit}>
+          Save
+        </Button>
+      </div>
     </Window>
   );
 }

@@ -5,7 +5,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import '@progress/kendo-theme-default/dist/all.css';
 
-import Login from './Login.jsx';
+import App from './App';
+import Login from './Login';
 import Movies from './Movies';
 
 const queryClient = new QueryClient();
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <App>
+        <RouterProvider router={router} />
+      </App>
     </QueryClientProvider>
   </React.StrictMode>,
 );

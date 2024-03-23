@@ -109,7 +109,8 @@ function Movies() {
   }
 
   return (
-    <div>
+    <fieldset>
+      <legend>Movies</legend>
       <NotificationGroup
         style={{
           right: 0,
@@ -127,17 +128,11 @@ function Movies() {
         <Column field={'director'} title={'Director'} />
         <Column field={'average_score'} title={'Score'} />
       </Grid>
-      <div>
-        <Button
-          className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base"
-          onClick={toggleRateWindow}
-        >
+      <div className="button-group">
+        <Button themeColor={'secondary'} onClick={toggleRateWindow}>
           Rate Movies
         </Button>
-        <Button
-          className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base"
-          onClick={toggleCreateWindow}
-        >
+        <Button themeColor={'secondary'} onClick={toggleCreateWindow}>
           Create Movies
         </Button>
         {rateWindowVisible && (
@@ -145,7 +140,7 @@ function Movies() {
         )}
         {createWindowVisible && <CreateWindow toggleWindow={toggleCreateWindow} onSuccess={checkJobStatus} />}
       </div>
-    </div>
+    </fieldset>
   );
 }
 

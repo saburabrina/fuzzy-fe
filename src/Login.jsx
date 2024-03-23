@@ -30,18 +30,19 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="login">
       <Form
         onSubmit={handleSubmit}
         render={() => (
           <FormElement>
-            <fieldset className={'k-form-fieldset'}>
-              <legend className={'k-form-legend'}>Login</legend>
+            <fieldset className="k-form-fieldset">
+              <legend className="k-form-legend">Login</legend>
               <FieldWrapper className="k-form-field-wrap">
                 <Field
-                  labelClassName={'k-form-label'}
-                  label={'Email: '}
-                  name={'email'}
+                  labelClassName="k-form-label"
+                  label="Email: "
+                  name="email"
+                  type="email"
                   component={Input}
                   value={email}
                   onChange={(v) => setEmail(v)}
@@ -51,10 +52,10 @@ function Login() {
               <FieldWrapper>
                 <div className="k-form-field-wrap">
                   <Field
-                    labelClassName={'k-form-label'}
-                    label={'Password: '}
-                    name={'password'}
-                    type={'password'}
+                    labelClassName="k-form-label"
+                    label="Password: "
+                    name="password"
+                    type="password"
                     component={Input}
                     value={password}
                     onChange={(v) => setPassword(v)}
@@ -63,7 +64,9 @@ function Login() {
               </FieldWrapper>
             </fieldset>
 
-            <Button type="submit">Login</Button>
+            <div className="button-group">
+              <Button type="submit">Login</Button>
+            </div>
           </FormElement>
         )}
       />

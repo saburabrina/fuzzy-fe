@@ -100,12 +100,17 @@ const JsonField = (props) => {
   );
 };
 
-function CreateWindow({ toggleWindow }) {
+function CreateWindow({ toggleWindow, ...props }) {
   const moviePattern = { title: '', director: '' };
   const [newMovies, setNewMovies] = useState([moviePattern]);
   const [rawJSON, setRawJSON] = useState(true);
 
-  const { mutate: createMovies, isSuccess, isError } = useCreateMovies();
+  const onSuccess = (data) => {
+    const jobId = data.job_id;
+    props.onSuccess(jobId, 'Creation');
+  };
+
+  const { mutate: createMovies, isSuccess, isError } = useCreateMovies({ onSuccess });
 
   const handleSubmit = () => {
     createMovies(newMovies);

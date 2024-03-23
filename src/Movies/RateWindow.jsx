@@ -5,15 +5,22 @@ import { Input } from '@progress/kendo-react-inputs';
 import React, { useState } from 'react';
 import { useRateMovies } from '../state/mutations';
 
-function RateWindow({ movies, toggleWindow }) {
-  const { mutate: rateMovies, isSuccess } = useRateMovies();
+function RateWindow({ movies, toggleWindow, ...props }) {
   const [formState, setFormState] = useState(movies);
+
+  const onSuccess = (data) => {
+    const jobId = data.job_id;
+    props.onSuccess(jobId, 'Rating');
+  };
+
+  const { mutate: rateMovies, isSuccess } = useRateMovies({ onSuccess });
 
   const onChangeInput = (index, value) => {
     const form = formState;
     form[index].score = value;
     setFormState(form);
   };
+
   const handleSubmit = () => {
     const formattedValues = formState.map((v) => ({ movie_id: v.id, score: v.score }));
     rateMovies(formattedValues);

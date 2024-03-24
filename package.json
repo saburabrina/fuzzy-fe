@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@progress/kendo-data-query": "^1.7.0",
@@ -38,7 +39,11 @@
     "@progress/kendo-svg-icons": "^2.3.0",
     "@progress/kendo-theme-default": "^7.2.1",
     "@tanstack/react-query": "^5.28.4",
+    "@testing-library/jest-dom": "^6.4.2",
     "axios": "^1.6.8",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
@@ -46,6 +51,10 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
+    "@testing-library/react": "^14.2.2",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
@@ -58,6 +67,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "jest-mock": "^29.7.0",
     "prettier": "^3.2.5",
     "vite": "^5.2.2"
   }

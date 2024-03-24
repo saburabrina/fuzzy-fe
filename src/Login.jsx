@@ -15,7 +15,7 @@ function Login() {
     navigate('/');
   };
 
-  const login = useLogin({ onSuccess });
+  const { mutate: login } = useLogin({ onSuccess });
 
   const handleSubmit = (v) => {
     const form = new FormData();
@@ -23,11 +23,11 @@ function Login() {
     form.set('password', v.password);
 
     const data = new URLSearchParams(form);
-    login.mutate(data);
+    login(data);
   };
 
   return (
-    <div className="login">
+    <div className="login" data-testId="login">
       <Form
         onSubmit={handleSubmit}
         render={() => (
@@ -58,7 +58,9 @@ function Login() {
             </fieldset>
 
             <div className="button-group">
-              <Button type="submit">Login</Button>
+              <Button data-testId="loginButton" type="submit">
+                Login
+              </Button>
             </div>
           </FormElement>
         )}

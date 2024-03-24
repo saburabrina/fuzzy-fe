@@ -17,7 +17,7 @@ function RateWindow({ movies, toggleWindow, ...props }) {
 
   const onChangeInput = (index, value) => {
     const form = formState;
-    form[index].score = value;
+    form[index].score = Number(value);
     setFormState(form);
   };
 
@@ -51,9 +51,9 @@ function RateWindow({ movies, toggleWindow, ...props }) {
                 <td>
                   <Input
                     name="score"
-                    type="numeric"
+                    type="number"
                     onChange={(e) => onChangeInput(dataIndex, e.value)}
-                    value={formState[dataIndex].score}
+                    defaultValue={formState[dataIndex].score}
                     min={0}
                     max={10}
                   />

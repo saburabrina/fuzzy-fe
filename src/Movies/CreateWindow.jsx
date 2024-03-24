@@ -110,7 +110,7 @@ function CreateWindow({ toggleWindow, ...props }) {
     props.onSuccess(jobId, 'Creation');
   };
 
-  const { mutate: createMovies, isSuccess, isError } = useCreateMovies({ onSuccess });
+  const { mutate: createMovies, isSuccess, isError, isPending } = useCreateMovies({ onSuccess });
 
   const handleSubmit = () => {
     createMovies(newMovies);
@@ -132,7 +132,8 @@ function CreateWindow({ toggleWindow, ...props }) {
     >
       <fieldset>
         <legend>Movies</legend>
-        {isError && 'Something Got Wrong...'}
+        {isPending && <span style={{ color: 'blue' }}>Loading...</span>}
+        {isError && <span style={{ color: 'red' }}>Something Got Wrong...</span>}
         <ButtonGroup>
           <Button togglable={true} selected={!rawJSON} onClick={() => setRawJSON(false)}>
             Form

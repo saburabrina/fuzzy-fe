@@ -13,7 +13,7 @@ function RateWindow({ movies, toggleWindow, ...props }) {
     props.onSuccess(jobId, 'Rating');
   };
 
-  const { mutate: rateMovies, isSuccess } = useRateMovies({ onSuccess });
+  const { mutate: rateMovies, isSuccess, isPending, isError } = useRateMovies({ onSuccess });
 
   const onChangeInput = (index, value) => {
     const form = formState;
@@ -38,8 +38,8 @@ function RateWindow({ movies, toggleWindow, ...props }) {
     >
       <fieldset>
         <legend>Movies List</legend>
-        {rateMovies.isPending && 'Loading...'}
-        {rateMovies.isError && 'Something Got Wrong...'}
+        {isPending && <span style={{ color: 'blue' }}>Loading...</span>}
+        {isError && <span style={{ color: 'red' }}>Something Got Wrong...</span>}
         <Grid data={formState}>
           <Column field={'title'} title={'Title'} />
           <Column field={'director'} title={'Director'} />

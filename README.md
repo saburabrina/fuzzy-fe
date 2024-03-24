@@ -1,8 +1,25 @@
-# React + Vite
+# Aplicação em React + Vite + Kendo UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma Aplicação em React + Vite + Kendo UI com uma página de login, uma página de cadastro de usuário e um página de feed exibindo uma lista de filmes, alimentada pela API que pode ser encontrada no repositório [API](https://github.com/saburabrina/fuzzy-be). Também há ações para criação e pontuação de novos filmes.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `yarn` ou `npm`
+
+## Instalar Dependências
+
+Vá na pasta root do projeto e rode no terminal:
+
+- `yarn install` ou `npm install`
+
+## Rodar projeto
+
+Vá na pasta root do projeto e rode no terminal:
+
+- `yarn dev` ou `npm run dev`
+
+## Rodar testes
+
+Vá na pasta root do projeto e rode no terminal:
+
+- `yarn test` ou `npm run test`

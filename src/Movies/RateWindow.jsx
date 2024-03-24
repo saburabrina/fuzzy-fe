@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { useRateMovies } from '../state/mutations';
 
 function RateWindow({ movies, toggleWindow, ...props }) {
-  const [formState, setFormState] = useState(movies);
+  const [formState, setFormState] = useState(movies.map((v) => ({ ...v, score: v.user_score })));
 
   const onSuccess = (data) => {
     const jobId = data.job_id;
@@ -40,20 +40,20 @@ function RateWindow({ movies, toggleWindow, ...props }) {
         <legend>Movies List</legend>
         {rateMovies.isPending && 'Loading...'}
         {rateMovies.isError && 'Something Got Wrong...'}
-        <Grid data={movies}>
+        <Grid data={formState}>
           <Column field={'title'} title={'Title'} />
           <Column field={'director'} title={'Director'} />
           <Column
             field={'score'}
             title={'Score (0 - 10)'}
             cells={{
-              data: ({ dataIndex, dataItem }) => (
+              data: ({ dataIndex }) => (
                 <td>
                   <Input
                     name="score"
                     type="numeric"
                     onChange={(e) => onChangeInput(dataIndex, e.value)}
-                    placeholder={dataItem.user_score}
+                    value={formState[dataIndex].score}
                     min={0}
                     max={10}
                   />

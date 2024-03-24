@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { api } from '../services/api';
 
 export const useMovies = () =>
   useQuery({
     queryFn: () => {
-      return axios
-        .get('http://localhost:3000/movies', { withCredentials: true, headers: { Accept: 'application/json' } })
+      return api
+        .get('/movies')
         .then((res) => res.data)
         .catch((err) => {
           throw err;
@@ -16,11 +16,8 @@ export const useMovies = () =>
   });
 
 export const jobStatus = (jobId) => {
-  return axios
-    .get(`http://localhost:3000/jobs/${jobId}/status`, {
-      withCredentials: true,
-      headers: { Accept: 'application/json' },
-    })
+  return api
+    .get(`/jobs/${jobId}/status`)
     .then((res) => res.data)
     .catch((err) => err);
 };
